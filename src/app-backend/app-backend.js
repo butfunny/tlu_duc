@@ -27,13 +27,21 @@ module.exports = {
 
         require("../../dao/contest-dao.js")(injector);
 
+        require("../../dao/question-type-dao.js")(injector);
+
         require("../../dao/user-admin-dao.js")(injector);
+
+        require("../../dao/user-dao.js")(injector);
 
         require("./controllers/api-router.js")(injector);
 
         require("./controllers/contest-controller.js")(injector);
 
+        require("./controllers/question-type-controller.js")(injector);
+
         require("./controllers/security-controller.js")(injector);
+
+        require("./controllers/user-controller.js")(injector);
 
         require("./security/security.js")(injector);
 

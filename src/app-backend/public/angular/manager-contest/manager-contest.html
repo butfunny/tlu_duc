@@ -20,8 +20,8 @@
             <td>{{c.startTime | date : 'dd/MM/yyyy'}}</td>
             <td>{{c.endTime | date : 'dd/MM/yyyy'}}</td>
             <td>
-                <a href=""><i class="material-icons">mode_edit</i></a>
-                <a href=""><i class="material-icons">delete</i></a>
+                <a href="" ng-click="editContest(c)"><i class="material-icons">mode_edit</i></a>
+                <a href="" ng-click="deleteContest(c)"><i class="material-icons">delete</i></a>
             </td>
         </tr>
     </tbody>
@@ -36,7 +36,7 @@
 
 <div id="modal1" class="modal">
     <div class="modal-content">
-        <h4>Tạo mới cuộc thi</h4>
+        <h4>{{contest._id ? 'Cập nhật' : 'Tạo mới'}} cuộc thi</h4>
         <div class="row">
             <div class="input-field col s12">
                 <input id="nameContest" type="text" ng-model="contest.name" required>
@@ -69,7 +69,8 @@
     </div>
     <div class="modal-footer">
 
-        <a ng-click="createContest()" class=" modal-action modal-close waves-effect waves-green btn-flat">Tạo mới</a>
+        <a ng-click="createContest()" class=" modal-action modal-close waves-effect waves-green btn-flat" ng-if="!contest._id">Tạo mới</a>
+        <a ng-click="updateContest()" class=" modal-action modal-close waves-effect waves-green btn-flat" ng-if="contest._id">Cập nhật</a>
         <a class=" modal-action modal-close waves-effect waves-green btn-flat">Thôi</a>
 
     </div>

@@ -1,0 +1,19 @@
+<table class="highlight">
+    <thead>
+    <tr>
+        <th>Username</th>
+        <th>Tên</th>
+        <th>Email</th>
+        <th>Trạng thái</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr ng-repeat="u in users">
+        <td>{{u.username}}</td>
+        <td>{{u.name}}</td>
+        <td>{{u.email}}</td>
+        <td>{{u.active ? 'Đã kích hoạt' : 'Chưa kích hoạt'}}</td>
+    </tr>
+    </tbody>
+</table>

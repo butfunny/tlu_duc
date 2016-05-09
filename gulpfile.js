@@ -40,7 +40,7 @@ gulp.task('start-server', function () {
 
 gulp.task('create-user-admin', function() {
 	var mongoose = require('mongoose');
-	var db = mongoose.connect('mongodb://localhost:27017/tlctf');
+	var db = mongoose.connect('mongodb://localhost:27017/tltfc');
 
 	var injector = require("./common/injector").createInjector();
 	require('./dao/user-admin-dao')(injector);
@@ -52,7 +52,14 @@ gulp.task('create-user-admin', function() {
 			UserAdminDao.create({username: config.adminUser.username, password: crypto.createHash('md5').update(config.adminUser.password).digest("hex")}, function() {
 
 			});
-		})
+		});
+
+		//UserDao.remove({}, function () {
+		//	UserDao.create({username: "butfunny", password: crypto.createHash('md5').update("123123").digest("hex"), email: "butfunny63@gmail.com", name: "Cường Team", active: false, active_code: "12345"}, function() {
+        //
+        //
+		//	});
+		//})
 
 	});
 

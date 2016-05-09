@@ -12,6 +12,19 @@ module.exports = function(injector) {
                 ContestDao.find({}, function (err, totalContest) {
                     res.json(totalContest);
                 })
+            });
+
+            apiRouter.put("/contest/:cid", Security.authorDetails, function (req, res) {
+                delete req.body._id;
+                ContestDao.update({_id: req.params.cid}, req.body, function () {
+                    res.end();
+                })
+            });
+
+            apiRouter.delete("/contest/:cid", Security.authorDetails, function (req, res) {
+                ContestDao.remove({_id: req.params.cid}, function () {
+                    res.end();
+                })
             })
         })
 };
