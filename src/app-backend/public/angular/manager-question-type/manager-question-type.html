@@ -1,0 +1,51 @@
+
+
+<p ng-if="questionsType.length == 0">Bạn chưa có loại câu hỏi nào</p>
+
+<table ng-if="questionsType.length > 0" class="highlight">
+    <thead>
+    <tr>
+        <th>Tên</th>
+        <th>Tác vụ</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr ng-repeat="q in questionsType">
+        <td>{{q.name}}</td>
+        <td>
+            <a href="" ng-click="editQt(q)"><i class="material-icons">mode_edit</i></a>
+            <a href="" ng-click="deleteQt(q)"><i class="material-icons">delete</i></a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+
+<div class="fixed-action-btn" style="bottom: 45px; right: 24px;" ng-click="openCreateQtModal()">
+    <button class="modal-trigger btn-floating btn-large red waves-effect waves-light red" data-target="modalQT">
+        <i class="large material-icons">add</i>
+    </button>
+</div>
+
+<div id="modalQT" class="modal">
+    <form name="modalForm">
+        <div class="modal-content">
+            <h4>{{qt._id ? 'Cập nhật' : 'Tạo mới'}} loại câu hỏi</h4>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="nameContest" type="text" ng-model="questionType.name" required>
+                    <label for="nameContest">Tên loại câu hỏi</label>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+
+            <button ng-click="createQt()" ng-class="(!modalForm.$valid) ? 'disabled': ''" ng-disabled="!modalForm.$valid" class="modal-action modal-close waves-effect waves-green btn-flat" ng-if="!questionType._id">Tạo mới</button>
+            <button ng-click="updateQt()" ng-class="(!modalForm.$valid) ? 'disabled': ''" ng-disabled="!modalForm.$valid" class="modal-action modal-close waves-effect waves-green btn-flat" ng-if="questionType._id">Cập nhật</button>
+            <a class=" modal-action modal-close waves-effect waves-green btn-flat">Thôi</a>
+
+        </div>
+    </form>
+
+</div>

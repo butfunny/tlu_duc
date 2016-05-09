@@ -27,6 +27,8 @@ module.exports = {
 
         require("../../dao/contest-dao.js")(injector);
 
+        require("../../dao/question-dao.js")(injector);
+
         require("../../dao/question-type-dao.js")(injector);
 
         require("../../dao/user-admin-dao.js")(injector);
@@ -36,6 +38,8 @@ module.exports = {
         require("./controllers/api-router.js")(injector);
 
         require("./controllers/contest-controller.js")(injector);
+
+        require("./controllers/question-controller.js")(injector);
 
         require("./controllers/question-type-controller.js")(injector);
 

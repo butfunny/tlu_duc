@@ -35,43 +35,45 @@
 </div>
 
 <div id="modal1" class="modal">
-    <div class="modal-content">
-        <h4>{{contest._id ? 'Cập nhật' : 'Tạo mới'}} cuộc thi</h4>
-        <div class="row">
-            <div class="input-field col s12">
-                <input id="nameContest" type="text" ng-model="contest.name" required>
-                <label for="nameContest">Tên cuộc thi</label>
+    <form name="modalForm">
+        <div class="modal-content">
+            <h4>{{contest._id ? 'Cập nhật' : 'Tạo mới'}} cuộc thi</h4>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="nameContest" type="text" ng-model="contest.name" required>
+                    <label for="nameContest">Tên cuộc thi</label>
+                </div>
             </div>
-        </div>
 
-        <div class="row">
-            <div class="input-field col s12">
-                <textarea id="introContest" class="materialize-textarea" ng-model="contest.introContest" required></textarea>
-                <label for="introContest">Giới thiệu cuộc thi</label>
+            <div class="row">
+                <div class="input-field col s12">
+                    <textarea id="introContest" class="materialize-textarea" ng-model="contest.introContest" required></textarea>
+                    <label for="introContest">Giới thiệu cuộc thi</label>
+                </div>
             </div>
-        </div>
 
-        <div class="row">
-            <div class="input-field col s12">
-                <input type="text" input-date format="dd/mm/yyyy" id="startTime" class="datepicker" ng-model="contest.startTime">
-                <label for="startTime">Thời gian bắt đầu</label>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input type="text" input-date format="dd/mm/yyyy" id="startTime" class="datepicker" ng-model="contest.startTime" required>
+                    <label for="startTime">Thời gian bắt đầu</label>
+                </div>
             </div>
-        </div>
 
-        <div class="row">
-            <div class="input-field col s12">
-                <input type="text" input-date format="dd/mm/yyyy" id="endTime" class="datepicker" ng-model="contest.endTime">
-                <label for="endTime">Thời gian kết thúc</label>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input type="text" input-date format="dd/mm/yyyy" id="endTime" class="datepicker" ng-model="contest.endTime" required>
+                    <label for="endTime">Thời gian kết thúc</label>
+                </div>
             </div>
+
+
         </div>
+        <div class="modal-footer">
 
+            <button ng-click="createContest()" ng-disabled="!modalForm.$valid" ng-class="(!modalForm.$valid) ? 'disabled': '' " class=" modal-action modal-close waves-effect waves-green btn-flat" ng-if="!contest._id">Tạo mới</button>
+            <button ng-click="updateContest()" ng-disabled="!modalForm.$valid" ng-class="(!modalForm.$valid) ? 'disabled': '' " class=" modal-action modal-close waves-effect waves-green btn-flat" ng-if="contest._id">Cập nhật</button>
+            <a class=" modal-action modal-close waves-effect waves-green btn-flat">Thôi</a>
 
-    </div>
-    <div class="modal-footer">
-
-        <a ng-click="createContest()" class=" modal-action modal-close waves-effect waves-green btn-flat" ng-if="!contest._id">Tạo mới</a>
-        <a ng-click="updateContest()" class=" modal-action modal-close waves-effect waves-green btn-flat" ng-if="contest._id">Cập nhật</a>
-        <a class=" modal-action modal-close waves-effect waves-green btn-flat">Thôi</a>
-
-    </div>
+        </div>
+    </form>
 </div>
